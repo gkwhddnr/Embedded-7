@@ -1,0 +1,32 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local virtual environments
+.venv/
+venv/
+env/
+
+# Local environment variables
+.env
+.env.*
+!.env.example
+
+# Build output
+build/
+dist/
+*.egg-info/
+
+# Editor temporary files
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
