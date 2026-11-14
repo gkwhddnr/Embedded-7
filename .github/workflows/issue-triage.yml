@@ -1,0 +1,47 @@
+name: Issue defaults
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: read
+  issues: write
+jobs:
+  defaults:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issue = context.payload.issue;
+            const update = { owner, repo, issue_number: issue.number };
+            if (!issue.milestone) update.milestone = 1;
+            if (Object.keys(update).length > 3) {
+              await github.rest.issues.update(update);
+            }
+            if (!issue.assignees.length) {
+              try {
+                await github.rest.issues.addAssignees({
+                  owner, repo, issue_number: issue.number,
+                  assignees: [issue.user.login]
+                });
+              } catch (error) {
+                core.warning('작성자를 담당자로 지정하지 못했습니다: ' + error.message);
+              }
+            }
+            const areas = {
+              'AI·데이터': 'area:ai',
+              '하드웨어·제어': 'area:hardware',
+              '블루투스·통신': 'area:bluetooth',
+              '앱·화면': 'area:app',
+              '통합·검증': 'area:integration',
+              '문서·발표': 'area:docs'
+            };
+            const match = (issue.body || '').match(/### 작업 영역\s+([^
+]+)/);
+            const label = match && areas[match[1].trim()];
+            if (label) {
+              await github.rest.issues.addLabels({
+                owner, repo, issue_number: issue.number, labels: [label]
+              });
+            }
