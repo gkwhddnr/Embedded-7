@@ -37,8 +37,7 @@ jobs:
               '통합·검증': 'area:integration',
               '문서·발표': 'area:docs'
             };
-            const match = (issue.body || '').match(/### 작업 영역\s+([^
-]+)/);
+            const match = (issue.body || '').match(/### 작업 영역\s+([^\r\n]+)/);
             const label = match && areas[match[1].trim()];
             if (label) {
               await github.rest.issues.addLabels({
