@@ -2,6 +2,7 @@ name: 오류 보고
 description: 재현되는 문제를 등록합니다.
 title: "[오류] "
 labels: ["bug"]
+projects: ["gkwhddnr/6"]
 body:
   - type: textarea
     id: reproduce
