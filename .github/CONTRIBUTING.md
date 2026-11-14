@@ -8,6 +8,8 @@
 
 작업 종류는 task, bug, documentation, question 라벨을 사용합니다. 작업 분야는 area:ai, area:hardware, area:bluetooth, area:app, area:integration, area:docs 중 해당하는 라벨을 추가합니다. 작업 요청에서 선택한 영역은 자동으로 라벨에 반영됩니다.
 
-착수할 때 프로젝트 상태를 In progress로, 검토가 필요하면 In review로 변경하고 완료 기준을 충족한 뒤 이슈를 닫습니다. 진행을 막는 문제가 있으면 blocked 라벨을 붙이고 원인을 적습니다.
+착수할 때 프로젝트 상태를 In Progress로, 검토가 필요하면 In Review로 변경하고 완료 기준을 충족한 뒤 이슈를 닫습니다. 진행을 막는 문제가 있으면 blocked 라벨을 붙이고 원인을 적습니다.
 
 자동 설정은 GitHub Actions가 실행된 뒤 반영됩니다. 자동화가 실패하면 Actions 실행 기록을 확인합니다.
+
+작업 요청·오류 보고 양식은 임베디드 프로젝트 연결을 지정합니다. 프로젝트 쓰기 권한이 있는 계정으로 등록하면 연결됩니다. 연결되지 않은 이슈는 Projects에서 추가합니다. 로드맵의 시작·종료일은 담당자가 작업 일정에 맞춰 입력합니다.
