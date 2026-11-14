@@ -1,0 +1,42 @@
+name: 작업 요청
+description: 구현·실험·문서 작업을 등록합니다.
+title: "[작업] "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        담당자는 작성자 본인으로, 마일스톤은 프로젝트 일정으로 자동 설정됩니다.
+        다른 담당자가 맡을 때는 등록 후 담당자를 변경해 주세요.
+  - type: textarea
+    id: goal
+    attributes:
+      label: 작업 목적
+      description: 해결할 문제와 필요한 결과를 적어 주세요.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 작업 영역
+      options:
+        - AI·데이터
+        - 하드웨어·제어
+        - 블루투스·통신
+        - 앱·화면
+        - 통합·검증
+        - 문서·발표
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: 작업 내용과 완료 기준
+      placeholder: "- [ ] 확인할 결과"
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: 참고 사항
+      description: 의존 작업이나 논의할 내용을 적어 주세요.
