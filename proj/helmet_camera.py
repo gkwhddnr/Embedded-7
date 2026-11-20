@@ -6,7 +6,9 @@ from ultralytics import YOLO
 
 
 def main():
-    model_path = Path(__file__).resolve().parent/"best.pt"
+    # 코드와 같은 폴더에서 best.pt를 찾음
+    model_path = Path(__file__).resolve().parent / "best.pt"
+
     if not model_path.exists():
         raise FileNotFoundError(f"Model file not found: {model_path}")
 
@@ -23,12 +25,21 @@ def main():
     try:
         while True:
             frame = camera.capture_array()
-            results = model.predict(source=frame, conf=0.5, verbose=False)
+
+            results = model.predict(
+                source=frame,
+                conf=0.5,
+                verbose=False,
+            )
+
             cv2.imshow("Helmet detection", results[0].plot())
+
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
+
     finally:
         camera.stop()
+        camera.close()
         cv2.destroyAllWindows()
 
 
